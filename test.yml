@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: aws-param-test
+spec:
+  containers:
+    - name: param-test
+      image: 828448425071.dkr.ecr.us-east-1.amazonaws.com/aws-parameter-init-container:latest
+      imagePullPolicy: Always
