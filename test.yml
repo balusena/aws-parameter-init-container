@@ -1,4 +1,11 @@
 apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: test
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::828448425071:role/eks-prod-ssm-pm-role
+---
+apiVersion: v1
 kind: Pod
 metadata:
   name: aws-param-test
@@ -7,3 +14,6 @@ spec:
     - name: param-test
       image: 828448425071.dkr.ecr.us-east-1.amazonaws.com/aws-parameter-init-container:latest
       imagePullPolicy: Always
+      env:
+        - name: PARAMETERS
+          value: "AMQP_USER,roboshop.prod.rabbitmq.amqp_user AMQP_PASS,roboshop.prod.rabbitmq.amqp_pass"
