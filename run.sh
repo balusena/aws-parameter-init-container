@@ -3,8 +3,8 @@ for param in ${PARAMETERS} ; do
   PARAM=$(echo $param | awk -F , '{print $2}')
   PASS=$(aws ssm get-parameter --name $PARAM --with-decryption --query 'Parameter.Value' --output text)
 
-  echo export $SHELL_VAR=$PASS >>params
+  echo export $SHELL_VAR=$PASS >>/data/params
 done
 
-cat params
+cat /data/params
 
