@@ -17,7 +17,7 @@ for param in ${PARAMETERS} ; do
   fi
 
   # Export the shell variable with the parameter value and append it to /data/params file
-  echo export $SHELL_VAR=\"$PASS\" >>/data/params
+  echo export $SHELL_VAR=$PASS >>/data/params
 done
 
 # Display the contents of /data/params file
